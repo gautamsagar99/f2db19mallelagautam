@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  p rows:#{query.rows} , columns:#{query.cols}
+  - var rows=Number(query.rows)
+  - var cols=Number(query.cols)
+  if !(Number.isInteger(rows)) || !(Number.isInteger(cols))
+   p ERROR!!!! values are not integers 
+  else if rows < 1 && rows>=10
+   p ERROR!!!! rows value should be less than 10 and greater than 1
+  else if cols < 1 && cols >=10
+   p ERROR!!!! column value should be less than 10 and greater than 1
+  else
+   table#outer
+    - for(let i=1; i<=rows; i++) {
+     tr#middle
+      - for(let j=1; j<=cols; j++) {
+       td=(i+rows*(j-1))
+      - }
+    - }
+
