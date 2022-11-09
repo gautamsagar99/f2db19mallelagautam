@@ -2,10 +2,10 @@ extends layout
 
 block content
   h1= title
-  - let results=[{tree_species:"Birch trees",tree_age:"200",tree_height:"120m"} , {tree_species:"Aspen trees",tree_age:"110",tree_height:"50m"} , {tree_species:"Ash trees",tree_age:"36",tree_height:"70m"}]
+  - let items = results
   div(class="container-fluid") 
    div(class="row")
-    each tree,index in results
+    each tree,index in items
         div(class="col-sm-2" onclick=`buy(${index})`) tree_species: #{tree.tree_species}, tree_age: #{tree.tree_age}, tree_height: #{tree.tree_height} 
   script.
     let item = 0

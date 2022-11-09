@@ -31,3 +31,16 @@ exports.tree_delete = function(req, res) {
 exports.tree_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: tree update PUT' + req.params.id); 
 }; 
+
+// VIEWS 
+// Handle a show all view 
+exports.tree_view_all_Page = async function(req, res) { 
+    try{ 
+        thetrees = await tree.find(); 
+        res.render('tree', { title: 'tree Search Results', results: thetrees }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};
