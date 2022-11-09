@@ -1,8 +1,15 @@
 var tree = require('../models/tree'); 
  
 // List of all trees 
-exports.tree_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: tree list'); 
+exports.tree_list = async function(req, res) { 
+    try{ 
+        thetrees = await tree.find(); 
+        res.send(thetrees); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // for a specific tree. 
