@@ -51,9 +51,26 @@ exports.tree_delete = function(req, res) {
 }; 
  
 // Handle tree update form on PUT. 
-exports.tree_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: tree update PUT' + req.params.id); 
-}; 
+exports.tree_update_put =  async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await tree.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.tree_species)
+        toUpdate.tree_species = req.body.tree_species;
+    if(req.body.tree_age) 
+        toUpdate.tree_age = req.body.tree_age;
+    if(req.body.tree_height)
+        toUpdate.tree_height = req.body.tree_height;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+   failed`);
+    }
+};
 
 // VIEWS 
 // Handle a show all view 
