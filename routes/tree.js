@@ -9,5 +9,8 @@ router.get('/', tree_controlers.tree_view_all_Page );
 // router.get('/trees/:id', tree_controlers.tree_detail);
 
 router.get('/detail', tree_controlers.tree_view_one_Page);
-    
+
+/* GET create costume page */
+router.get('/create', tree_controlers.tree_create_Page);
+
 module.exports = router;
