@@ -16,4 +16,7 @@ router.get('/create', tree_controlers.tree_create_Page);
 /* GET create update page */
 router.get('/update', tree_controlers.tree_update_Page);
 
+/* GET delete costume page */
+router.get('/delete', tree_controlers.tree_delete_Page);
+
 module.exports = router;
