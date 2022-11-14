@@ -13,4 +13,7 @@ router.get('/detail', tree_controlers.tree_view_one_Page);
 /* GET create costume page */
 router.get('/create', tree_controlers.tree_create_Page);
 
+/* GET create update page */
+router.get('/update', tree_controlers.tree_update_Page);
+
 module.exports = router;
