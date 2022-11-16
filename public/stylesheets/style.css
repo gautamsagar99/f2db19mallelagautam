@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: blanchedalmond;
 }
 
 a {
@@ -9,4 +10,9 @@ a {
 .treeAttr {
   background-color: aquamarine;
   width: 200px;
+  border: 2px solid aqua;
+  border-radius: 5px 5px 5px;
+  margin-top: 2px;
+  /* margin-bottom: 2px; */
+  text-align: center;
  }

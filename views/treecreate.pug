@@ -1,17 +1,24 @@
 extends layout
 block content
-  h1= title
+  h1=title
   form(id='TreeForm', action="/resource/trees", method="POST")
     div.form-group
-      label.treeAttr(for='tree_species')  tree species
-      input#tree_species(type='text', name='tree_species')
+      div(class="form-group row")
+        label.treeAttr(for='tree_species' class="col-sm-2 col-form-label" )  Tree species
+        div(class="col-sm-6")
+          input#tree_species(type='text', name='tree_species' class="form-control "  placeholder="Tree Species")
     div.form-group
-      label.treeAttr(for='tree_age') Tree age
-      input#tree_age(type='number', name='tree_age')
+      div(class="form-group row")
+        label.treeAttr(for='tree_age' class="col-sm-2 col-form-label") Tree age
+        div(class="col-sm-6")
+          input#tree_age(type='number', name='tree_age' class="form-control" placeholder="Tree Age")
     div.form-group
-      label.treeAttr(for='tree_height') Tree height
-      input#tree_height(type='text', name='tree_height')
-    input(type="submit")
+      div(class="form-group row")
+        label.treeAttr(for='tree_height' class="col-sm-2 col-form-label") Tree height
+        div(class="col-sm-6")
+          input#tree_height(type='text', name='tree_height' class="form-control" placeholder="Tree Height")
+    input(type="submit" class="btn btn-outline-success btn-lg" style="margin-top:10px;")
+    input(type="reset" class="btn btn-outline-warning btn-lg " style="margin-top:10px;"  value="Reset")
   script.
     document.forms['TreeForm'].addEventListener('submit', (event) => {
     event.preventDefault();

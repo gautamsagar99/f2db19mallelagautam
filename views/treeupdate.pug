@@ -1,40 +1,50 @@
 extends layout
 block content
   h1= title
-  - let treeid = toShow._id
-  - let tree_species = toShow.tree_species
-  - let tree_age = toShow.tree_age
-  - let tree_height = toShow.tree_height
+  if (toShow == null)
+    h2 No instance to delete
+  else  
+    - let treeid = toShow._id
+    - let tree_species = toShow.tree_species
+    - let tree_age = toShow.tree_age
+    - let tree_height = toShow.tree_height
 
-  div.row(class='mb-2')
-  div.mr-1 ID is
-  div #{treeid}
-  - let actionid = "/resource/trees/" + treeid
-  form(id='TreeForm', action=actionid, method="PUT")
-    div.form-group
-      label.treeAttr(for='tree_species')  tree species
-      input#tree_species(type='text', name='tree_species',value=tree_species )
-    div.form-group
-      label.treeAttr(for='tree_age') Tree age
-      input#tree_age(type='number', name='tree_age', value=tree_age)
-    div.form-group
-      label.treeAttr(for='tree_height') Tree height
-      input#tree_height(type='text', name='tree_height',value=tree_height)
-    input(type="submit")
-  script.
-    document.forms['TreeForm'].addEventListener('submit', (event) => {
-    event.preventDefault();
-    // TODO do something here to show user that form is being submitted
-    fetch(event.target.action, {
-    method: 'PUT',
-    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-    }).then((resp) => {
-    return resp.json(); // or resp.text() or whatever the server sends
-    }).then((body) => {
-    alert("Save succeded")
-    // TODO handle body
-    }).catch((error) => {
-    // TODO handle error
-    alert("Save failed " + error )
-    });
-    });
+    div.row(class='mb-2')
+    div.mr-1 Tree Details for the ID: 
+    div #{treeid} are:
+    - let actionid = "/resource/trees/" + treeid
+    form(id='TreeForm', action=actionid, method="PUT")
+      div.form-group
+        div(class="form-group row")
+          label.treeAttr(for='tree_species' class="col-sm-2 col-form-label")  Tree species
+          div(class="col-sm-6")
+            input#tree_species(type='text', class="form-control " , name='tree_species',value=tree_species )
+      div.form-group
+        div(class="form-group row")
+          label.treeAttr(for='tree_age' class="col-sm-2 col-form-label") Tree age
+          div(class="col-sm-6")
+            input#tree_age(type='number', class="form-control ", name='tree_age', value=tree_age)
+      div.form-group
+        div(class="form-group row")
+          label.treeAttr(for='tree_height' class="col-sm-2 col-form-label") Tree height
+          div(class="col-sm-6")
+            input#tree_height(type='text',class="form-control ", name='tree_height',value=tree_height)
+      input(type="submit" class="btn btn-outline-success btn-lg" style="margin-top:10px;")
+      input(type="reset" class="btn btn-outline-warning btn-lg " style="margin-top:10px;"  value="Reset")
+    script.
+      document.forms['TreeForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+      method: 'PUT',
+      body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+      alert("Save succeded")
+      // TODO handle body
+      }).catch((error) => {
+      // TODO handle error
+      alert("Save failed " + error )
+      });
+      });
