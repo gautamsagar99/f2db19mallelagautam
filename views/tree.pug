@@ -4,13 +4,14 @@ block content
   h1= title
   - let items = results
   div(class="container-fluid") 
-   div(class="row")
+   div(class="row m-1")
     each tree,index in items
-        div(class="col-sm-2" onclick=`buy(${index})`) tree_species: #{tree.tree_species}, tree_age: #{tree.tree_age}, tree_height: #{tree.tree_height} 
+      - let destination = `dispatch(\"/trees/update?id=${tree._id}\")`
+      div(class="row-sm-2", class="m-1" ) tree_species: #{tree.tree_species}, tree_age: #{tree.tree_age}, tree_height: #{tree.tree_height} 
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
-    let item = 0
-      function buy(item){
-        alert(`You purchased item ${item}`);
-      }
+    function dispatch(path){
+      window.location.href=path
+    }
   
 
