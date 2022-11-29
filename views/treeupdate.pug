@@ -23,7 +23,7 @@ block content
         div(class="form-group row")
           label.treeAttr(for='tree_age' class="col-sm-2 col-form-label") Tree age
           div(class="col-sm-6")
-            input#tree_age(type='number', class="form-control ", name='tree_age', value=tree_age)
+            input#tree_age(type='number', class="form-control ", name='tree_age', value=tree_age, min=1, max=10000)
       div.form-group
         div(class="form-group row")
           label.treeAttr(for='tree_height' class="col-sm-2 col-form-label") Tree height

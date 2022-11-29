@@ -3,12 +3,19 @@ extends layout
 block content
   h1= title
   - let items = results
+  div 
+    a(href='/trees/create') 
+        button.btn.btn-primary(type="button") Create 
   div(class="container-fluid") 
    div(class="row m-1")
     each tree,index in items
       - let destination = `dispatch(\"/trees/update?id=${tree._id}\")`
+      - let destination1 = `dispatch(\"/trees/detail?id=${tree._id}\")`
+      - let destination2 = `dispatch(\"/trees/delete?id=${tree._id}\")`
       div(class="row-sm-2", class="m-1" ) tree_species: #{tree.tree_species}, tree_age: #{tree.tree_age}, tree_height: #{tree.tree_height} 
-        button.btn( class="btn-primary ml-1", onclick= destination) Update
+        button.btn( class="btn-primary ml-1", onclick= destination) Update 
+        button.btn( class="btn-secondary ml-1", onclick= destination1) detail
+        button.btn( class="btn-warning ml-1", onclick= destination2) delete
   script.
     function dispatch(path){
       window.location.href=path

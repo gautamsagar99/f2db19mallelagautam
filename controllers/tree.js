@@ -99,9 +99,11 @@ exports.tree_view_all_Page = async function(req, res) {
 exports.tree_view_one_Page = async function(req, res) {
     console.log("single view for id " + req.query.id)
     try{
+        console.log("before")
     result = await tree.findById( req.query.id)
     res.render('treedetail',
    { title: 'Tree Detail', toShow: result });
+   console.log(result.tree_species)
     }
     catch(err){
     res.status(500)
