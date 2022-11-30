@@ -6,17 +6,17 @@ block content
       div(class="form-group row")
         label.treeAttr(for='tree_species' class="col-sm-2 col-form-label" )  Tree species
         div(class="col-sm-6")
-          input#tree_species(type='text', name='tree_species' class="form-control "  placeholder="Tree Species")
+          input#tree_species(type='text', name='tree_species' class="form-control "  placeholder="Tree Species" required)
     div.form-group
       div(class="form-group row")
         label.treeAttr(for='tree_age' class="col-sm-2 col-form-label") Tree age
         div(class="col-sm-6")
-          input#tree_age(type='number', name='tree_age' class="form-control" placeholder="Tree Age")
+          input#tree_age(type='number', name='tree_age' class="form-control" placeholder="Tree Age" required)
     div.form-group
       div(class="form-group row")
         label.treeAttr(for='tree_height' class="col-sm-2 col-form-label") Tree height
         div(class="col-sm-6")
-          input#tree_height(type='text', name='tree_height' class="form-control" placeholder="Tree Height")
+          input#tree_height(type='text', name='tree_height' class="form-control" placeholder="Tree Height" required)
     input(type="submit" class="btn btn-outline-success btn-lg" style="margin-top:10px;")
     input(type="reset" class="btn btn-outline-warning btn-lg " style="margin-top:10px;"  value="Reset")
   script.
